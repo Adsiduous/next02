@@ -1,18 +1,18 @@
 {
   "api": {
-    "amplifyDatasource": {
+    "next02api": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 7,
-              "description": "Next02 API"
+              "description": "next02api"
             }
-          }
+          },
+          "additionalAuthenticationProviders": []
         }
       }
     }
