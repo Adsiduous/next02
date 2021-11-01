@@ -7,6 +7,8 @@ export const getBlog = /* GraphQL */ `
       id
       name
       category
+      createdAt
+      updatedAt
       posts {
         items {
           id
@@ -17,8 +19,6 @@ export const getBlog = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -33,11 +33,11 @@ export const listBlogs = /* GraphQL */ `
         id
         name
         category
+        createdAt
+        updatedAt
         posts {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -49,15 +49,17 @@ export const getPost = /* GraphQL */ `
       id
       title
       blogID
+      createdAt
+      updatedAt
       blog {
         id
         name
         category
+        createdAt
+        updatedAt
         posts {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       comments {
         items {
@@ -69,8 +71,6 @@ export const getPost = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -85,6 +85,8 @@ export const listPosts = /* GraphQL */ `
         id
         title
         blogID
+        createdAt
+        updatedAt
         blog {
           id
           name
@@ -95,8 +97,6 @@ export const listPosts = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -111,6 +111,8 @@ export const getComment = /* GraphQL */ `
         id
         title
         blogID
+        createdAt
+        updatedAt
         blog {
           id
           name
@@ -121,8 +123,6 @@ export const getComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       content
       createdAt

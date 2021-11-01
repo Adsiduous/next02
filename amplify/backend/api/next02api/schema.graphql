@@ -2,6 +2,8 @@ type Blog @model {
   id: ID!
   name: String!
   category: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
   posts: [Post] @connection(keyName: "byBlog", fields: ["id"])
 }
 
@@ -9,6 +11,8 @@ type Post @model @key(name: "byBlog", fields: ["blogID"]) {
   id: ID!
   title: String!
   blogID: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
   blog: Blog @connection(fields: ["blogID"])
   comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
 }
@@ -18,4 +22,6 @@ type Comment @model @key(name: "byPost", fields: ["postID", "content"]) {
   postID: ID!
   post: Post @connection(fields: ["postID"])
   content: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
 }

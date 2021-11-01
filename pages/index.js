@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 
-import { listBlogs } from "../src/graphql/queries";
+import { listBlogs, getBlog } from "../src/graphql/queries";
 import { createBlog } from "../src/graphql/mutations";
 import CreatePost from "../components/createPost";
+import CreateComments from "../components/CreateComments";
 
 const initialBlogState = { name: "", category: "" };
 
@@ -13,18 +14,37 @@ const Index = () => {
 
   useEffect(() => {
     fetchBlogs();
+    getABlog();
   }, []);
 
   const setBlogInput = (key, value) => {
     setBlogState({ ...blogState, [key]: value });
   };
 
+  const getABlog = async () => {
+    try {
+      const blogdata = await API.graphql(
+        graphqlOperation(getBlog, {
+          id: "43f3cc45-fd33-4130-a3ae-2a247a2da6db",
+        })
+      );
+    } catch (err) {
+      console.log("Error get a blog", err);
+    }
+  };
+
   const fetchBlogs = async () => {
     try {
-      const blogsData = await API.graphql(graphqlOperation(listBlogs));
+      const blogsData = await API.graphql(
+        graphqlOperation(listBlogs, {
+          filter: {
+            createdAt: { between: ["2021-10-27", "2021-10-29"] },
+          },
+        })
+      );
       const blogsd = blogsData.data.listBlogs.items;
       setBlogs(blogsd);
-      await console.log(blogs);
+      console.log("filter Blogs Data", blogsData);
     } catch (err) {
       console.log(err, "error fetching blogs");
     }
@@ -96,9 +116,8 @@ const Index = () => {
         </div>
       ))}
       <CreatePost />
+      <CreateComments />
     </div>
-
-    
   );
 };
 

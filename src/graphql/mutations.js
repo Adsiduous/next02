@@ -10,6 +10,8 @@ export const createBlog = /* GraphQL */ `
       id
       name
       category
+      createdAt
+      updatedAt
       posts {
         items {
           id
@@ -20,8 +22,6 @@ export const createBlog = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -34,6 +34,8 @@ export const updateBlog = /* GraphQL */ `
       id
       name
       category
+      createdAt
+      updatedAt
       posts {
         items {
           id
@@ -44,8 +46,6 @@ export const updateBlog = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -58,6 +58,8 @@ export const deleteBlog = /* GraphQL */ `
       id
       name
       category
+      createdAt
+      updatedAt
       posts {
         items {
           id
@@ -68,8 +70,6 @@ export const deleteBlog = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -82,15 +82,17 @@ export const createPost = /* GraphQL */ `
       id
       title
       blogID
+      createdAt
+      updatedAt
       blog {
         id
         name
         category
+        createdAt
+        updatedAt
         posts {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       comments {
         items {
@@ -102,8 +104,6 @@ export const createPost = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -116,15 +116,17 @@ export const updatePost = /* GraphQL */ `
       id
       title
       blogID
+      createdAt
+      updatedAt
       blog {
         id
         name
         category
+        createdAt
+        updatedAt
         posts {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       comments {
         items {
@@ -136,8 +138,6 @@ export const updatePost = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -150,15 +150,17 @@ export const deletePost = /* GraphQL */ `
       id
       title
       blogID
+      createdAt
+      updatedAt
       blog {
         id
         name
         category
+        createdAt
+        updatedAt
         posts {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       comments {
         items {
@@ -170,8 +172,6 @@ export const deletePost = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -187,6 +187,8 @@ export const createComment = /* GraphQL */ `
         id
         title
         blogID
+        createdAt
+        updatedAt
         blog {
           id
           name
@@ -197,8 +199,6 @@ export const createComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       content
       createdAt
@@ -218,6 +218,8 @@ export const updateComment = /* GraphQL */ `
         id
         title
         blogID
+        createdAt
+        updatedAt
         blog {
           id
           name
@@ -228,8 +230,6 @@ export const updateComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       content
       createdAt
@@ -249,6 +249,8 @@ export const deleteComment = /* GraphQL */ `
         id
         title
         blogID
+        createdAt
+        updatedAt
         blog {
           id
           name
@@ -259,8 +261,6 @@ export const deleteComment = /* GraphQL */ `
         comments {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       content
       createdAt
